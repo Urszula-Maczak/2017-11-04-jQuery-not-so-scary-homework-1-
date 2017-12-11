@@ -9,29 +9,24 @@ $(function () {
   
   $('.rating-circle').mouseover(function() {
 
-  	$(this).prevAll().css('background-color', 'yellow');
-    $("h1").css('background-color', 'white');
-    //$('div:first').nextAll().css('background-color', 'yellow');
-    //$(this).siblings().css('background-color', 'yellow');  });
-
+  	$(this).prevAll().addBack().css('background-color', 'yellow');
+    $(this).nextAll().css('background-color', 'white');
+    
+//Kółka muszą być w konetnerze div, bo inaczej każdy div przed nim
+//jest brany pod uwagę np. tytuł, nazwa h1
   });
-  $('.rating-circle').mouseout(function() {
-  	$(this).css('background-color', 'white');
-  	//$("div").prevAll().removeClass('background-color', 'white');
+
+    $('.rating-circle').mouseout(function() {
+  	 $(this).removeClass('background-color', 'yellow');
+     $(this).prevAll().addBack().css('background-color', 'green');
 
   });
 
 
 
   $('.rating-circle').on('click', function() {
-    //$('div').prevAll('.rating-circle').css('background-color', 'green');
-    //$(this).prevAll().css('background-color', 'green');
-    $(this).css('background-color', 'green');
-    $(this).prevAll().css('background-color', 'green');  
-    //$("div").siblings(".rating-circle").css("background-color: green")
-    var test = $(this).index();
-    $('div#ocena').append(test + '/5');
-    //$(.rating-circle).text("#ocena" + index);
+    var test = $(this)
+    $('#index').text(test.index() + 1 + ' z 5');
     console.log('działa');
   });
   
